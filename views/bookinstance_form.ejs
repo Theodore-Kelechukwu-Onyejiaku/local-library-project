@@ -4,7 +4,7 @@
 </div>
 <div class="container">
     <h1><%= title %></h1>
-    <% var bookinstance; var book_list; %>
+    <% var bookinstance; var book_list; var errors %>
     <form action="" method="POST">
         <div class="row">
             <div class="col-sm-12 col-md-6">
@@ -23,7 +23,7 @@
                                     <option value="<%= book._id %>" selected="false"><%= book.title %></option>
                                 <% } %>
                             <% }else{ %>
-                                <option value="<%= book.title %>"><%= book.title %></option>
+                                <option value="<%= book._id %>"><%= book.title %></option>
                             <% } %>
                         <% }) %>
                     <% } %>
@@ -58,6 +58,11 @@
                 </div>
             </div>
             <button class="btn btn-primary" type="submit">Submit</button>
+            <% if(errors){ %>
+                <% errors.forEach((error)=>{ %>
+                    <span class="text-danger"><%= error.msg %></span><br>
+                <% }) %>
+            <% } %>
         </div>
         
     </form>
